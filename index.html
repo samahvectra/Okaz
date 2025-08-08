@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Marketing Agency</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <a href="#" class="logo"><img src="./okaz_logo.png" alt="" width="150px"></a>
+<nav class="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#blog">Blog</a>
+    <a href="#footer">Footer</a>
+</nav>
+
+</header>
+
+<main>
+  <section class="main">
+    <div class="logo-img">
+      <img src="./okaz.png" alt="Logo" />
+    </div>
+
+    <h1>Welcome to Your Marketing Agency</h1>
+    <p>A full-service advertising agency can handle all the marketing and advertising aspects of business. This usually includes strategic planning, production, creativity, and innovations as well as interactive marketing services via the internet.</p>
+    <a href="#" class="btn">Get Started</a>
+
+    <div class="social-icon">
+      <a href="https://www.facebook.com/Okaz.Agency" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.facebook.com/Okaz.Agency"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com/okaz.agency/"><i class="fab fa-instagram"></i></a>
+      <a href="https://eg.linkedin.com/in/okaz-marketing-agency-0991a8203"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </section>
+
+  <section id="home" class="about">
+    <h2>We Spread Your Message <br> <span>Effectively And Expertly.</span> </h2>
+    <p>We are a full-service marketing agency dedicated to helping businesses grow through innovative strategies and creative solutions. Our team of experts is here to provide you with the best marketing services tailored to your needs.</p>
+  </section>
+
+  <section id="about" class="about1">
+    <h2>Shaping <br>A Product's <br>Future?</h2>
+    <p>Okaz builds your own personalized plan as simple as solving a jigsaw puzzle and help you reach the audience whose behaviors you seek to change.</p>
+  </section>
+
+  <section id="services" class="about2">
+    <h2><span>We Are The Top</span><br> World Design Awarded Agency</h2>
+  </section>
+
+  <section class="quote-section">
+    <div class="quote-text">
+      <h2>Ready to boom?<br>Request A Quote Now!</h2>
+    </div>
+
+    <div class="quote-form">
+      <form action="#" method="post">
+        <p><small>Fields marked with an <span style="color:red">*</span> are required</small></p>
+
+        <label for="name">Name <span style="color:red">*</span></label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Phone <span style="color:red">*</span></label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="email">Email <span style="color:red">*</span></label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message <span style="color:red">*</span></label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+<script>
+document.querySelectorAll('.navbar a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetID = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetID);
+
+        if (targetElement) {
+            const startPosition = window.pageYOffset;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 800; // time in ms
+            let start = null;
+
+            function animationScroll(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animationScroll);
+            }
+
+            // Easing function for smooth acceleration/deceleration
+            function easeInOutQuad(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animationScroll);
+        }
+    });
+});
+</script>
+
+</main>
+</body>
+</html>
